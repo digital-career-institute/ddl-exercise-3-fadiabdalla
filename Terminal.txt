@@ -1,0 +1,76 @@
+mysql> CREATE TABLE Planets (planet_id INT, planet_name VARCHAR(50) NOT NULL, diameter DECIMAL(10,2), distance_from_sun DECIMAL);
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> DESCRIBE Planets;
++-------------------+---------------+------+-----+---------+-------+
+| Field             | Type          | Null | Key | Default | Extra |
++-------------------+---------------+------+-----+---------+-------+
+| planet_id         | int           | YES  |     | NULL    |       |
+| planet_name       | varchar(50)   | NO   |     | NULL    |       |
+| diameter          | decimal(10,2) | YES  |     | NULL    |       |
+| distance_from_sun | decimal(10,0) | YES  |     | NULL    |       |
++-------------------+---------------+------+-----+---------+-------+
+4 rows in set (0,00 sec)
+
+mysql> ALTER TABLE PLANETS 
+    -> ;
+ERROR 1146 (42S02): Table 'mydb.PLANETS' doesn't exist
+mysql> ALTER TABLE Planets MODIFIY diameter DECIMAL(10,2) NOT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'MODIFIY diameter DECIMAL(10,2) NOT NULL' at line 1
+mysql> ALTER TABLE Planets MODIFIY (diameter DECIMAL(10,2)) NOT NULL;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'MODIFIY (diameter DECIMAL(10,2)) NOT NULL' at line 1
+mysql> ALTER TABLE Planets MODIFY diameter DECIMAL(10,2) NOT NULL;
+Query OK, 0 rows affected (0,03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESCRIBE Planets;
++-------------------+---------------+------+-----+---------+-------+
+| Field             | Type          | Null | Key | Default | Extra |
++-------------------+---------------+------+-----+---------+-------+
+| planet_id         | int           | YES  |     | NULL    |       |
+| planet_name       | varchar(50)   | NO   |     | NULL    |       |
+| diameter          | decimal(10,2) | NO   |     | NULL    |       |
+| distance_from_sun | decimal(10,0) | YES  |     | NULL    |       |
++-------------------+---------------+------+-----+---------+-------+
+4 rows in set (0,00 sec)
+
+mysql> CREATE TABLE Galaxies (
+    ->     galaxy_id INT,
+    ->     galaxy_name VARCHAR(50) NOT NULL,
+    ->     description TEXT,
+    ->     number_of_stars INT
+    -> );
+Query OK, 0 rows affected (0,02 sec)
+
+mysql> DESCRIBE Galaxies;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| galaxy_id       | int         | YES  |     | NULL    |       |
+| galaxy_name     | varchar(50) | NO   |     | NULL    |       |
+| description     | text        | YES  |     | NULL    |       |
+| number_of_stars | int         | YES  |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+4 rows in set (0,00 sec)
+
+mysql> DROP TABLE Galaxies;
+Query OK, 0 rows affected (0,01 sec)
+
+mysql> SHOW TABLES;
++----------------+
+| Tables_in_mydb |
++----------------+
+| Books          |
+| DiningSpots    |
+| Employee       |
+| Events         |
+| Movies         |
+| Planets        |
+| Student        |
+| users          |
+| users2         |
++----------------+
+9 rows in set (0,00 sec)
+
+mysql> 
+
